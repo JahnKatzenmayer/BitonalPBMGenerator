@@ -1,0 +1,43 @@
+﻿<Window x:Class="BitonalPBMGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BitonalPBMGenerator"
+        mc:Ignorable="d"
+        Title="Bitonal PBM Generator" Height="450" Width="800" Background="#FF292929">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10">
+            <StackPanel.Background>
+                <ImageBrush x:Name="originalImage" Stretch="Uniform"/>
+            </StackPanel.Background>
+            <Label Content="Original Image" HorizontalAlignment="Center" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
+            <StackPanel.Background>
+                <ImageBrush x:Name="previewImage" Stretch="Uniform"/>
+            </StackPanel.Background>
+            <Label Content="Preview Image" HorizontalAlignment="Center" Foreground="White"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label Content="Black/White Balance" HorizontalAlignment="Center" Foreground="White"/>
+            <Slider x:Name="bwBalance" Margin="0,0,0,10" Maximum="255" Value="127" ValueChanged="bwBalance_ValueChanged"/>
+            <Button Margin="0,0,0,10" Content="Save as Bitonal PBM" Click="saveBitonal"/>
+            <Button Content="Save as TXT" Click="saveTXT"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Margin="0,0,0,10" Content="Select Image" Click="selectImage"/>
+            <CheckBox Margin="0,0,0,10" x:Name="updatePreview" Content="Always Update Preview" Foreground="White" IsChecked="True" Unchecked="updatePreview_Unchecked" Checked="updatePreview_Checked"/>
+            <Button x:Name="updateAutomaticallyButton" Content="Update Preview" Visibility="Hidden" Click="updateAutomaticallyButton_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
